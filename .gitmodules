@@ -1,0 +1,12 @@
+[submodule "EasyLogger"]
+	path = deps/EasyLogger
+	url = https://github.com/armink/EasyLogger.git
+[submodule "LinuxDetours"]
+	path = deps/LinuxDetours
+	url = https://github.com/cddjr/LinuxDetours.git
+[submodule "cJSON"]
+	path = deps/cJSON
+	url = https://github.com/DaveGamble/cJSON.git
+[submodule "fifo_map"]
+	path = deps/fifo_map
+	url = https://github.com/nlohmann/fifo_map.git
