@@ -2,7 +2,7 @@
  * @Author: 景大虾(dengjingren@foxmail.com)
  * @Date: 2023-08-05
  * @Last Modified by: 景大虾(dengjingren@foxmail.com)
- * @Last Modified time: 2023-08-14
+ * @Last Modified time: 2023-08-15
  */
 
 #define LOG_TAG "Hooks"
@@ -24,6 +24,7 @@ void InitFunctions() {
 
   // 可直接拿到地址
   ugreen_evbuffer_pullup = evbuffer_pullup;
+  ugreen_curl_easy_init = curl_easy_init;
 
   SymbolLookup symbol{-1};
   if (!symbol.Good()) {
@@ -77,6 +78,12 @@ void DetourInitilization() {
 #ifdef HIGH_RES_DOUBAN
   HOOKFUNC(match_douban_result_to_db);
   HOOKFUNC(match_douban_nfo_result_to_db);
+#ifdef USE_DOUBAN_WECHAT_API
+  // 小程序接口拿到的高清图需要我们伪造Referer
+  // 否则会被限速10kb
+  HOOKFUNC(movies_svr_common_download_file);
+  HOOKFUNC(ugreen_curl_easy_init);
+#endif  // USE_DOUBAN_WECHAT_API
 #endif  // HIGH_RES_DOUBAN
   HOOKFUNC(refresh_update_film_match_info);
   HOOKFUNC(sqlite3_wraper_film_insert_record_2);

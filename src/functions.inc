@@ -2,7 +2,7 @@
  * @Author: 景大虾(dengjingren@foxmail.com)
  * @Date: 2023-08-05
  * @Last Modified by: 景大虾(dengjingren@foxmail.com)
- * @Last Modified time: 2023-08-14
+ * @Last Modified time: 2023-08-15
  */
 
 // 以下只是用来函数调用
@@ -119,3 +119,7 @@ DO_APP_FUNC(
 DO_APP_FUNC(int, sqlite3_wraper_label_renameLabel,
             (void *, long long, int, std::string),
             "_ZN6ugreen20sqlite3_wraper_label11renameLabelExiSs");
+DO_APP_FUNC(int, movies_svr_common_download_file,
+            (const std::string &, const std::string &, bool, size_t),
+            "_ZN17movies_svr_common13download_fileERKSsS1_bm");
+DO_APP_FUNC(CURL *, ugreen_curl_easy_init, (void), "curl_easy_init");

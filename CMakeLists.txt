@@ -7,9 +7,13 @@ if(NOT(CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND CMAKE_CXX_COMPILER_VERSION MATCHE
   message(FATAL_ERROR "仅支持GCC 8.4.0")
 endif()
 
+include(CMakeDependentOption)
+
 option(LOGGER_ENABLED "Enable Logger" ON)
 option(ENHANCED_MANUAL_SEARCH_ENABLED "Enable Enhanced Manual Search" OFF)
 option(HIGH_RES_DOUBAN_ENABLED "Enable Hi-Res Douban Cover" OFF)
+option(USE_DOUBAN_WECHAT_API "Use APIs based on Douban WeChat" ON)
+CMAKE_DEPENDENT_OPTION(USE_DOUBAN_WEB_API "Use APIs based on Douban Web" OFF "USE_DOUBAN_WECHAT_API" ON)
 
 add_subdirectory(deps)
 
@@ -37,6 +41,7 @@ set(sources
   src/hooks/HttpResponseData.cc
   src/hooks/handleMoviesEpsCreate.cc
   src/hooks/refresh_movies_func.cc
+  src/hooks/download_file.cc
 
   src/ugreen/sqlite3_wraper_label.cc
 )
@@ -69,6 +74,16 @@ endif()
 if(HIGH_RES_DOUBAN_ENABLED)
   list(APPEND definitions
     HIGH_RES_DOUBAN=1
+  )
+endif()
+
+if(USE_DOUBAN_WECHAT_API)
+  list(APPEND definitions
+    USE_DOUBAN_WECHAT_API=1
+  )
+elseif(USE_DOUBAN_WEB_API)
+  list(APPEND definitions
+    USE_DOUBAN_WEB_API=1
   )
 endif()
 

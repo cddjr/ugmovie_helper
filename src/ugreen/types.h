@@ -2,9 +2,10 @@
  * @Author: 景大虾(dengjingren@foxmail.com)
  * @Date: 2023-08-05
  * @Last Modified by: 景大虾(dengjingren@foxmail.com)
- * @Last Modified time: 2023-08-14
+ * @Last Modified time: 2023-08-15
  */
 #pragma once
+#include <curl/curl.h>
 #include <event2/buffer.h>
 #include <event2/event.h>
 #include <event2/http.h>
