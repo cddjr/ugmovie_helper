@@ -10,3 +10,6 @@
 [submodule "fifo_map"]
 	path = deps/fifo_map
 	url = https://github.com/nlohmann/fifo_map.git
+[submodule "linux_injector"]
+	path = deps/linux_injector
+	url = https://github.com/namazso/linux_injector.git

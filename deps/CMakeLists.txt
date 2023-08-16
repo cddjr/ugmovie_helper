@@ -1,5 +1,6 @@
 add_subdirectory(LinuxDetours)
 #add_subdirectory(fifo_map)
+add_subdirectory(linux_injector)
 
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(ENABLE_CJSON_TEST "Enable building cJSON test" OFF)

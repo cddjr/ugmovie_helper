@@ -129,3 +129,13 @@ endif()
 
 add_executable(dltest test/dltest.c)
 target_link_libraries(dltest PRIVATE dl)
+
+add_custom_command(TARGET ${PROJECT_NAME}
+  POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E make_directory "${PROJECT_BINARY_DIR}/out/"
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+  "${PROJECT_SOURCE_DIR}/injector.sh"
+  "$<TARGET_FILE:${PROJECT_NAME}>"
+  "$<TARGET_FILE:linux_injector>"
+  "${PROJECT_BINARY_DIR}/out/"
+)

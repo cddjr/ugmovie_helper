@@ -42,5 +42,5 @@ jobs:
     - uses: actions/upload-artifact@v3.1.2
       with:
         name: release_${{env.TAG_NAME}}
-        path: ${{github.workspace}}/build/*.so
+        path: ${{github.workspace}}/build/out/
 
